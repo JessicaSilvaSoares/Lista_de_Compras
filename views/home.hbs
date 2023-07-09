@@ -1,0 +1,71 @@
+<h1 class="title">Lista de Compras</h1>
+
+<div class="box-btn">
+    <button id="open-model-create" class="btn-primary-fill"><i class="fa-solid fa-plus"></i> <p>Novo Item</p></button>
+</div>
+
+<div id="model-create" class="container-model">
+    <div class="model">
+        <i id="close-model-create" class="icon-close-model fa-solid fa-xmark"></i>
+
+        <h1 class="title">Nova Compra</h1>
+        <form class="form" action="/create" method="post" form-validate>
+                <div class="box-input">
+                    <input id="item" class="box-input__input" type="text" name="item" placeholder="Compra" input-validate>
+                    <label class="box-input__label" for="item">Compra</label>
+                </div>
+
+                <div class="box-input">
+                    <input id="quantidade" class="box-input__input" type="text" name="quantidade" placeholder="Quantidade" input-validate>
+                    <label class="box-input__label" for="quantidade">Quantidade</label>
+                </div>
+            
+            <button class="btn-secondary-fill model-btn" type="submit">Criar</button>
+        </form>
+        <p class="msg-error" msg-error></p>
+    </div>
+</div>
+
+<p class="text-info">A lista tem {{quantidadeDeItens.quantidadeDeItens}} itens</p>
+
+<section class="section-lista">
+    <div class="box-lista">
+        <h2 class="title-secondary">A Comprar</h2>
+        {{#each naoConcluidas}}
+            <div class="itens">
+                <label class="label-itens"> 
+                    <form class="label-itens__form-input" action="/edit-concluido/{{id}}" method="post">
+                        <input type="checkbox" name="concluido">
+                    </form>
+                    
+                    <div class="conteudo">
+                        <p class="conteudo__item">{{item}}</p>
+                        <small class="conteudo__quantidade">{{quantidade}}</small>
+                    </div>
+                </label>
+                
+                <a class="itens__icon-edit" href="/edit/{{id}}"><i class="icon-pen fa-solid fa-pen-to-square"></i></a>
+            </div>
+        {{/each}}
+    </div>
+
+    <div class="box-lista">
+        <h2 class="title-secondary">Compras Realizadas</h2>
+        {{#each concluidas}}
+            <div class="itens itens_concluido">
+                <label class="label-itens"> 
+                    <form class="label-itens__form-input" action="/edit-concluido/{{id}}" method="post">
+                        <input type="checkbox" name="concluido" checked>
+                    </form>
+
+                    <div class="conteudo conteudo_concluido">
+                        <p class="conteudo__item">{{item}}</p>
+                        <small class="conteudo__quantidade">{{quantidade}}</small>
+                    </div>
+                </label>
+
+                <a class="itens__icon-edit" href="/edit/{{id}}"><i class="icon-pen fa-solid fa-pen-to-square"></i></a>
+            </div>
+        {{/each}}
+    </div>
+</section>

@@ -1,0 +1,26 @@
+<a href="/home" class="nav-icon">
+    <i class="fa-solid fa-arrow-left"></i>
+</a>
+
+<div class="container-edit">
+    <h1 class="title ">Editar Compra</h1>
+
+    <form class="form" action="/edit/{{data.id}}" method="post" form-validate>
+                <div class="box-input">
+                    <input id="item" class="box-input__input" type="text" name="item" placeholder="Compra" value="{{data.item}}" input-validate>
+                    <label class="box-input__label" for="item">Compra</label>
+                </div>
+
+                <div class="box-input">
+                    <input id="quantidade" class="box-input__input" type="text" name="quantidade" placeholder="Quantidade" value="{{data.quantidade}}" input-validate>
+                    <label class="box-input__label" for="quantidade">Quantidade</label>
+                </div>
+        
+        <div class="box-btn-form">
+            <a class="link-btn-outlined form-btn" href="/delete/{{data.id}}">Deletar</a> 
+            <button class="btn-secondary-fill form-btn" type="submit">Editar</button>
+        </div>
+    </form>
+    
+    <p class="msg-error" msg-error></p>
+</div>
